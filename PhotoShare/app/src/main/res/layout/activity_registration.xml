@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img"
+    tools:context=".Registration">
+
+    <Button
+        android:id="@+id/buttonReg"
+        android:layout_width="301dp"
+        android:layout_height="48dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/coiny"
+        android:text="@string/registration_string"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.721" />
+
+    <EditText
+        android:id="@+id/emailLog"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email_string"
+        android:drawableStart="@drawable/ic_email_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.411" />
+
+    <EditText
+        android:id="@+id/passwordReg"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:inputType="textVisiblePassword"
+        android:hint="@string/password_string"
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.576" />
+
+    <EditText
+        android:id="@+id/fullname"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/fullname_string"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.269" />
+
+    <ProgressBar
+        android:id="@+id/progressBarReg"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="66dp"
+        android:layout_height="57dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954" />
+
+    <TextView
+        android:id="@+id/gotologin"
+        android:layout_width="205dp"
+        android:layout_height="31dp"
+        android:fontFamily="cursive"
+        android:text="@string/clickHereTOLogin"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.82" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="266dp"
+        android:layout_height="45dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/registration_string"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.122" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

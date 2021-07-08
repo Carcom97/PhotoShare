@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tinta"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="116dp"
+        android:layout_height="64dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/coiny"
+        android:onClick="logout"
+        android:text="@string/logout"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.989"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.992" />
+
+    <Button
+        android:id="@+id/caricafoto"
+        android:layout_width="145sp"
+        android:layout_height="68dp"
+        android:background="@drawable/custom_button2"
+        android:fontFamily="@font/coiny"
+        android:onClick="caricafoto"
+        android:text="@string/caricafoto"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.798" />
+
+
+
+    <Button
+        android:id="@+id/sfogliafoto"
+        android:layout_width="145dp"
+        android:layout_height="68sp"
+        android:background="@drawable/custom_button2"
+        android:fontFamily="@font/coiny"
+        android:onClick="browsingfoto"
+        android:text="@string/sfogliafoto"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.798" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="291dp"
+        android:layout_height="57dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/benvenuto"
+        android:textColor="#C17873"
+        android:textSize="33sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.072" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="429dp"
+        android:layout_height="376dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.326"
+        app:srcCompat="@drawable/sfon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">PhotoShare</string>
+    <string name="username_string">Username</string>
+    <string name="login">Login</string>
+    <string name="fullname_string">Full Name</string>
+    <string name="email_string">Email</string>
+    <string name="registration_string">Registration</string>
+    <string name="password_string">Password</string>
+    <string name="clickHereTOLogin">Click Here to Login</string>
+    <string name="sfogliafoto">Sfoglia Foto</string>
+    <string name="caricafoto">Carica foto</string>
+    <string name="logout">Logout</string>
+    <string name="benvenuto">Benvenuto in</string>
+    <string name="registerhere_msg">New? Register Here</string>
+    <string name="scatta_foto">scatta foto</string>
+    <string name="galleria">galleria</string>
+    <string name="Name">nome immagine</string>
+
+</resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tinta"
+    tools:context=".Caricafoto">
+
+    <Button
+        android:id="@+id/b_fotocamera"
+        android:layout_width="155dp"
+        android:layout_height="64dp"
+        android:background="@drawable/custom_button"
+        android:drawableTop="@drawable/ic_camera_alt_black_24dp"
+        android:fontFamily="@font/coiny"
+        android:text="@string/scatta_foto"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <Button
+        android:id="@+id/b_galleria"
+        android:layout_width="157dp"
+        android:layout_height="64dp"
+        android:background="@drawable/custom_button"
+        android:drawableTop="@drawable/ic_photo_library_black_24dp"
+        android:fontFamily="@font/coiny"
+        android:text="@string/galleria"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.883" />
+
+    <Button
+        android:id="@+id/indietro"
+        android:layout_width="91dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_back"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991" />
+
+    <Button
+        android:id="@+id/caricafoto"
+        android:layout_width="137dp"
+        android:layout_height="55dp"
+        android:background="@drawable/custom_button3"
+        android:drawableRight="@drawable/ic_file_upload_black_24dp"
+        android:fontFamily="@font/coiny"
+        android:text="@string/caricafoto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <EditText
+        android:id="@+id/nomefoto"
+        android:layout_width="233dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/Name"
+        android:textColorHint="@color/colorAccent"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.886"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <ImageView
+        android:id="@+id/imgLoad"
+        android:layout_width="400sp"
+        android:layout_height="400sp"
+        android:background="#E1B8E8"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.531" />
+
+    <ProgressBar
+        android:id="@+id/progressBarUploadfoto"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="397dp"
+        android:layout_height="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

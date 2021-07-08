@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img"
+    tools:context=".Login">
+
+    <Button
+        android:id="@+id/buttonLog"
+        android:layout_width="210dp"
+        android:layout_height="54dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/coiny"
+        android:text="@string/login"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.735" />
+
+    <EditText
+        android:id="@+id/passwordLog"
+        android:layout_width="328sp"
+        android:layout_height="56sp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/password_string"
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/emailLog"
+        android:layout_width="328sp"
+        android:layout_height="56sp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email_string"
+        android:drawableStart="@drawable/ic_email_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.327" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLog"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="74sp"
+        android:layout_height="70sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.925"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.124" />
+
+    <TextView
+        android:id="@+id/gotoregistration"
+        android:layout_width="208dp"
+        android:layout_height="38dp"
+        android:fontFamily="cursive"
+        android:text="@string/registerhere_msg"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.844" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="105dp"
+        android:layout_height="43dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/login"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.158" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
