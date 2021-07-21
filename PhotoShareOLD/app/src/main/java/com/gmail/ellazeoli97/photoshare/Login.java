@@ -45,9 +45,9 @@ public class Login extends AppCompatActivity {
                 String mail = email.getText().toString().trim();
                 String password_string = password.getText().toString().trim(); //trim() rimuove gli spazi bianchi
 
-                if(TextUtils.isEmpty( mail ))
+                if(TextUtils.isEmpty(mail))
                 {
-                    email.setError( "Email requested!" );
+                    email.setError("Email requested!");
                     return;
                 }
                 if(TextUtils.isEmpty( password_string ))

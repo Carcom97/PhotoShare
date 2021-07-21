@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class BrowsingFoto extends AppCompatActivity {
-        private RecyclerView recycler_view;
+        private static RecyclerView recycler_view;
         private ImageAdapter adapter;
         private ProgressBar progressBar;
         private ArrayList<String> images;
@@ -41,16 +41,14 @@ public class BrowsingFoto extends AppCompatActivity {
             adapter = new ImageAdapter(this, images);
             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
-            progressBar.setVisibility( View.VISIBLE );
+            progressBar.setVisibility(View.VISIBLE );
             storageReference.listAll().addOnSuccessListener( new OnSuccessListener<ListResult>() {
                 @Override
                 public void onSuccess(ListResult listResult) {
                     for (StorageReference sr : listResult.getItems())
-                    {
-                        sr.getDownloadUrl().addOnSuccessListener( new OnSuccessListener<Uri>() {
+                    {sr.getDownloadUrl().addOnSuccessListener( new OnSuccessListener<Uri>() {
                             @Override
-                            public void onSuccess(Uri uri)
-                            {
+                            public void onSuccess(Uri uri) {
                                 images.add( uri.toString());
                                 Log.d("item", uri.toString());
                             }
@@ -66,14 +64,12 @@ public class BrowsingFoto extends AppCompatActivity {
                 }
             } );
         }
-
-    @Override
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate( R.menu.menu, menu); //MenuInflater mi pernette di riempire menu con quello che ho creato
         return true;
-    }
-
+        }
     //Se il menu item viene cliccato si torna indietro alla MainActivity class
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.item_back)

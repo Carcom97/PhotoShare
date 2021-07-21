@@ -58,28 +58,27 @@ public class Caricafoto extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_caricafoto );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_caricafoto);
 
-        image = findViewById( R.id.imgLoad );
-        b_fotocamera = findViewById( R.id.b_fotocamera );
-        b_galleria = findViewById( R.id.b_galleria );
-        b_indietro = findViewById( R.id.indietro );
-        upload_img = findViewById( R.id.caricafoto );
-        img_name = findViewById( R.id.nomefoto );
-        progressBarHorizontal = findViewById( R.id.progressBarUploadfoto );
+        image = findViewById(R.id.imgLoad);
+        b_fotocamera = findViewById(R.id.b_fotocamera);
+        b_galleria = findViewById(R.id.b_galleria);
+        b_indietro = findViewById(R.id.indietro);
+        upload_img = findViewById(R.id.caricafoto);
+        img_name = findViewById(R.id.nomefoto);
+        progressBarHorizontal = findViewById(R.id.progressBarUploadfoto);
 
         storage = FirebaseStorage.getInstance().getReference();
         database = FirebaseDatabase.getInstance().getReference();
 
-        b_indietro.setOnClickListener( new View.OnClickListener() {
+        b_indietro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity( new Intent( getApplicationContext(), MainActivity.class ) );
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish(); //chiudi activity
             }
-        } );
-
+        });
         b_fotocamera.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,21 +106,19 @@ public class Caricafoto extends AppCompatActivity {
 
     private void openFile() {
         Intent intent = new Intent();
-        intent.setType( "image/*" );
-        intent.setAction( Intent.ACTION_GET_CONTENT ); //Insieme al Type 'image/*' mostra tutti i dati che possono essere essere scelti dall'utente
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT ); //Insieme al Type 'image/*' mostra tutti i dati che possono essere essere scelti dall'utente
         startActivityForResult( intent, GALLERY_IMG_REQUEST );
     }
-
     //SCATTA FOTO CON LA FOTOCAMERA
     private void getCameraPermission() {
         //If not have the permission then request it
-        if (ContextCompat.checkSelfPermission( this, Manifest.permission.CAMERA ) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions( this, new String[]{Manifest.permission.CAMERA}, CAMERA_CODE );
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA ) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_CODE );
         } else {
             dispatchTakePictureIntent();
         }
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == CAMERA_CODE) {
@@ -132,9 +129,8 @@ public class Caricafoto extends AppCompatActivity {
             }
         }
     }
-
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult( requestCode, resultCode, data );
+        super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK){
             File f = new File(currentPhotoPath);
@@ -147,7 +143,6 @@ public class Caricafoto extends AppCompatActivity {
             image.setImageURI( uri_img );
         }
     }
-
     String currentPhotoPath;
     //Image Path for a taken picture
     private File createImageFile() throws IOException {
@@ -165,9 +160,8 @@ public class Caricafoto extends AppCompatActivity {
         currentPhotoPath = image.getAbsolutePath();
         return image;
     }
-
     private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent( ACTION_IMAGE_CAPTURE);
+        Intent takePictureIntent = new Intent(ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
@@ -178,7 +172,6 @@ public class Caricafoto extends AppCompatActivity {
                 // Error occurred while creating the File
                 ex.printStackTrace();
             }
-            // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         "com.gmail.ellazeoli97.android.fileprovider",
@@ -188,9 +181,6 @@ public class Caricafoto extends AppCompatActivity {
             }
         }
     }
-
-
-
     //Upload the File image
     public void upload() {
         if (uri_img != null) {
@@ -201,9 +191,9 @@ public class Caricafoto extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
                             // Handle unsuccessful uploads
-                            Toast.makeText( getApplicationContext(), "Upload Failure", Toast.LENGTH_LONG ).show();
+                            Toast.makeText(getApplicationContext(), "Upload Failure", Toast.LENGTH_LONG).show();
                         }
-                    } ).addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Handler h = new Handler();
@@ -211,27 +201,25 @@ public class Caricafoto extends AppCompatActivity {
                     h.postDelayed( new Runnable() {
                         @Override
                         public void run() {
-                            progressBarHorizontal.setProgress( 0 );
+                            progressBarHorizontal.setProgress(0);
                         }
-                    }, 5000 );
-                    Image img = new Image( img_name.getText().toString().trim(), taskSnapshot.getUploadSessionUri().toString() );
+                    }, 5000);
+                    Image img = new Image(img_name.getText().toString().trim(), taskSnapshot.getUploadSessionUri().toString());
                     String id = database.push().getKey();
-                    database.child( id ).setValue( img );
+                    database.child(id).setValue(img);
 
-                    Toast.makeText( getApplicationContext(), "File uploaded", Toast.LENGTH_LONG ).show();
+                    Toast.makeText(getApplicationContext(), "File uploaded", Toast.LENGTH_LONG).show();
                 }
-            } ).addOnProgressListener( new OnProgressListener<UploadTask.TaskSnapshot>() {
+            } ).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                    progressBarHorizontal.setProgress( (int) progress );
+                    progressBarHorizontal.setProgress((int) progress);
                 }
-            } );
-        } else {
-            Toast.makeText( getApplicationContext(), "No file selected!", Toast.LENGTH_SHORT ).show();
+            });
+        }else {
+            Toast.makeText(getApplicationContext(), "No file selected!", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }
 

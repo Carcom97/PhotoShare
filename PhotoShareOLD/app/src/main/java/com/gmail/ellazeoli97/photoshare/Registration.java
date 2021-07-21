@@ -71,16 +71,16 @@ public class Registration extends AppCompatActivity {
                 progress_bar.setVisibility( View.VISIBLE );
 
                 //Registriamo l'utente nella firebase
-                mAuth.createUserWithEmailAndPassword( mail,password_string  ).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(mail, password_string).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if(task.isSuccessful()) {
-                            Toast.makeText( Registration.this, "User created.", Toast.LENGTH_SHORT ).show();
-                            startActivity( new Intent( getApplicationContext(), MainActivity.class ) );
+                            Toast.makeText(Registration.this, "User created.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class ) );
                         }else{
-                            Toast.makeText( Registration.this, "Error: "+task.getException().getMessage(), Toast.LENGTH_SHORT ).show();
-                            progress_bar.setVisibility( View.INVISIBLE );
+                            Toast.makeText(Registration.this, "Error: "+ task.getException().getMessage(), Toast.LENGTH_SHORT ).show();
+                            progress_bar.setVisibility(View.INVISIBLE);
                         }
                     }
                 });

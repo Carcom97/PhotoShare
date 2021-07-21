@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.gmail.ellazeoli97.photoshare"
+        minSdkVersion 24  //Versione Android API
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.firebase:firebase-auth:19.3.2' //firebase for authentication
+
+    implementation 'com.google.android.gms:play-services-auth:18.0.0' //Google Account Login
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'com.google.firebase:firebase-database:19.3.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestUtil 'androidx.test:orchestrator:1.4.0'
+}
+
+checkstyle {
+    configFile = file("${project.rootDir}/app/checkstyle.xml")
+    toolVersion = '8.+'
+    ignoreFailures = false
+}
+
+task checkstyle(type: Checkstyle) {
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+    exclude '**/androidTest/**'
+    showViolations = true
+    classpath = files()
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+jacoco {
+    toolVersion = '0.8.7' //Use latest version
+}
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
+task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+    //$buildDir  // Location of the build directory for the build Variant
+    def coverageSourceDirs = [
+            "src/main/java"
+    ]
+    def fileFilter = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/*$ViewInjector*.*',
+            '**/*$ViewBinder*.*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*'
+    ]
+    def javaClasses = fileTree(
+            dir: "$buildDir/intermediates/classes/debug",
+            excludes: fileFilter  //esclude i filtri elencati
+    )
+    classDirectories = files([ javaClasses ])
+    additionalSourceDirs = files(coverageSourceDirs)
+    sourceDirectories = files(coverageSourceDirs)
+    executionData = fileTree(dir: "$buildDir", includes: [
+            "jacoco/testDebugUnitTest.exec"
+    ])
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
